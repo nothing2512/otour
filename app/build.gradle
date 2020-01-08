@@ -1,0 +1,132 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+    androidExtensions {
+        experimental true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BASE_URL", "\"localhost/tour/v1/\""
+            buildConfigField "String", "BASE_IMAGE_URL", "\"localhost/tour/\""
+        }
+        debug {
+            debuggable true
+
+            buildConfigField "String", "BASE_URL", "\"localhost/tour/v1/\""
+            buildConfigField "String", "BASE_IMAGE_URL", "\"localhost/tour/\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+dependencies {
+    implementation deps.support.app_compat
+    implementation deps.support.recyclerview
+    implementation deps.support.cardview
+    implementation deps.support.design
+    implementation deps.support.core_ktx
+    implementation deps.support.annotations
+    implementation deps.support.legacy
+    implementation deps.support.design
+    implementation deps.support.constraint_layout
+
+    implementation deps.coroutine.core
+    implementation deps.coroutine.android
+
+    implementation deps.lifecycle.viewmodel_ktx
+    implementation deps.lifecycle.livedata_ktx
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.java8
+
+    implementation deps.kotlin.stdlib
+
+    implementation deps.timber
+    implementation deps.shimmer
+    implementation deps.imagepicker
+
+    implementation deps.espresso.idling
+    implementation deps.coil
+    implementation deps.reflection
+    implementation deps.activity_result
+
+    implementation deps.koin.core
+    implementation deps.koin.ext
+    implementation deps.koin.viewmodel
+    implementation deps.koin.scope
+    implementation deps.koin.androidx
+
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.gson
+
+    kapt deps.lifecycle.compiler
+
+    testImplementation deps.coroutine.test
+    testImplementation deps.junit
+    testImplementation deps.mock_web_server
+    testImplementation deps.arch_core.testing
+    testImplementation deps.mockk.test
+    testImplementation deps.test.hamcrest
+    testImplementation deps.koin.test
+
+    androidTestImplementation deps.junit
+
+    androidTestImplementation deps.support.app_compat
+    androidTestImplementation deps.support.recyclerview
+    androidTestImplementation deps.support.cardview
+    androidTestImplementation deps.support.design
+
+    androidTestImplementation deps.espresso.core
+    androidTestImplementation deps.espresso.contrib
+    androidTestImplementation deps.espresso.intents
+
+    androidTestImplementation deps.arch_core.testing
+    androidTestImplementation(deps.mockk.instrumented) {
+        exclude module: deps.objenesis.module
+    }
+    androidTestImplementation deps.objenesis.main
+
+    androidTestImplementation deps.test.junit
+    androidTestImplementation deps.test.core
+    androidTestImplementation deps.test.rules
+}
+
+addRepos(repositories)
+
+project.tasks.whenTaskAdded {
+    if (it.name == "testReleaseUnitTest") {
+        it.enabled = false
+    }
+}

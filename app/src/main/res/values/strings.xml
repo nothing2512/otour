@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Our Tour</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="text_login">Login</string>
+    <string name="text_register">Belum punya akun? Register Sekarang</string>
+    <string name="hint_username">Username</string>
+    <string name="text_button_register">Register</string>
+    <string name="text_home">Home</string>
+    <string name="text_search">Search</string>
+    <string name="text_histoty">Histoty</string>
+    <string name="text_profile">Profile</string>
+    <string name="text_on_going">On Going Promo!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

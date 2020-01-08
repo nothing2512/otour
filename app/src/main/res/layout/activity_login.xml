@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg"
+        tools:context="com.example.otour.ui.auth.activity.LoginActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginBottom="@dimen/spacing"
+            android:paddingStart="@dimen/double_spacing"
+            android:paddingEnd="@dimen/double_spacing"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text"
+                android:inputType="textEmailAddress"
+                android:hint="@string/hint_email"
+                android:textColorHint="@android:color/black"
+                android:padding="@dimen/spacing"
+                android:layout_marginBottom="@dimen/spacing"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text"
+                android:inputType="textPassword"
+                android:hint="@string/hint_password"
+                android:textColorHint="@android:color/black"
+                android:padding="@dimen/spacing"
+                android:layout_marginBottom="@dimen/spacing"
+                tools:ignore="Autofill" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginBottom="@dimen/spacing"
+            android:paddingEnd="@dimen/double_spacing"
+            android:paddingStart="@dimen/double_spacing"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_login"
+                android:background="@drawable/button"/>
+
+            <TextView
+                android:id="@+id/btRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/text_register"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/double_spacing"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>
